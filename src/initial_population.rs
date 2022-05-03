@@ -7,12 +7,16 @@ pub fn run() {
 }
 
 pub struct Chromosome {
+<<<<<<< HEAD
     pub gene: Vec<bool>
+=======
+    pub gene: Vec<bool>,
+    pub fitness: i16
+>>>>>>> af188f5b0c0eeac5a66990012317a9cd65152932
 }
 
 pub struct Population {
-    chromosomes: Vec<Chromosome>,
-    fitness: u32,
+    pub chromosomes: Vec<Chromosome>
 }
 
 impl Chromosome {
@@ -20,13 +24,16 @@ impl Chromosome {
         
         let mut gene = vec![];
 
+        let fitness = 0;
+      
         for _item in 0..size {
             let mut rng = rand::thread_rng();
             gene.push(rng.gen_bool(0.5));
         }
         
         Chromosome { 
-            gene
+            gene,
+            fitness
         }
     }
 
@@ -55,8 +62,7 @@ impl Population {
         }
 
         Population { 
-            chromosomes,
-            fitness: 0
+            chromosomes
         }
     }
 
@@ -64,10 +70,9 @@ impl Population {
         let mut index = 0;
         for item in self.chromosomes.iter() {
             print!("{} :", index);
-            print!(" | Fitness : {} | ", self.fitness);
+            print!(" | Fitness : {} \t| \t ", item.fitness);
             item.print_genes();
             index += 1;
         } 
     }
-
 }
