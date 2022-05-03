@@ -1,19 +1,19 @@
 pub struct Item {
-    id: u8,
-    name: String,
-    weight: u16,
-    value: u16,
-    is_present: bool
+    pub id: u8,
+    pub name: String,
+    pub weight: i16,
+    pub value: u16,
+    pub is_present: bool
 }
 
 pub struct Backpack {
-    size: u8,
-    max_weight: u16,
-    items: [Item; 6]
+    pub size: u8,
+    pub max_weight: i16,
+    pub items: [Item; 6]
 }
 
 impl Backpack {
-    pub fn new(size: u8, max_weight:u16) -> Backpack {
+    pub fn new(size: u8, max_weight:i16) -> Backpack {
         
 
         //Propably want that from a file or smth
@@ -46,7 +46,7 @@ impl Backpack {
 }
 
 impl Item {
-    pub fn new(id: u8, name: &str, weight: u16, value: u16, is_present: bool) -> Item {
+    pub fn new(id: u8, name: &str, weight: i16, value: u16, is_present: bool) -> Item {
         Item {id, name: name.to_string(), weight, value, is_present }
     }
 }
