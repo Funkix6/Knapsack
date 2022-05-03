@@ -7,7 +7,7 @@ pub fn run() {
 }
 
 pub struct Chromosome {
-    gene: Vec<bool>
+    pub gene: Vec<bool>
 }
 
 pub struct Population {
