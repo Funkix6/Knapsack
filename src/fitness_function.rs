@@ -10,7 +10,9 @@ pub fn run() {
 
 pub fn evaluate_fitness(mut population: Population, backpack: &Backpack) -> Population {
   
-  for i in 0..population.chromosomes.len() {    
+  for i in 0..population.chromosomes.len() {
+      println!("Evaluation chromosome n°{}", i);
+      let value = check_value(&population.chromosomes[i], &backpack);
       let weight = check_weight(&population.chromosomes[i], &backpack);
       let fitness: i16 = backpack.max_weight - weight;
       println!("fitness : {}", fitness);
@@ -21,7 +23,7 @@ pub fn evaluate_fitness(mut population: Population, backpack: &Backpack) -> Popu
 }
 
 //Test the fitness of the populations
-pub fn check_weight(chromosome: &Chromosome, backpack: &Backpack) -> i16 {
+fn check_weight(chromosome: &Chromosome, backpack: &Backpack) -> i16 {
   let mut total_weight: i16 = 0;
   
   for i in 0..chromosome.gene.len() {
@@ -34,4 +36,20 @@ pub fn check_weight(chromosome: &Chromosome, backpack: &Backpack) -> i16 {
   }
   println!("Total weight : {}", total_weight);
   total_weight
+}
+
+
+fn check_value(chromosome: &Chromosome, backpack: &Backpack) -> u16 {
+  let mut total_value: u16 = 0;
+  
+  for i in 0..chromosome.gene.len() {
+    if chromosome.gene[i] == true {
+      total_value += backpack.items[i].value;
+      println!(
+        "In the backpack there is : {} it has {} value.", 
+        backpack.items[i].name, backpack.items[i].value);
+    }
+  }
+  println!("Total value : {}", total_value);
+  total_value
 }

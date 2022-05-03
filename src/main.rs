@@ -26,7 +26,8 @@ fn main() {
     population.chromosomes.sort_by(|a, b| b.fitness.cmp(&a.fitness));
   
     population.print_population();
-  
+
+    
     selection::run();
     crossover::run();
     mutation::run();
