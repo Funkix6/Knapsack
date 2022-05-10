@@ -7,12 +7,8 @@ pub fn run() {
 }
 
 pub struct Chromosome {
-<<<<<<< HEAD
-    pub gene: Vec<bool>
-=======
     pub gene: Vec<bool>,
-    pub fitness: i16
->>>>>>> af188f5b0c0eeac5a66990012317a9cd65152932
+    pub fitness: i32
 }
 
 pub struct Population {
@@ -20,7 +16,7 @@ pub struct Population {
 }
 
 impl Chromosome {
-    pub fn new(size: u32) -> Chromosome {
+    pub fn new(size: i32) -> Chromosome {
         
         let mut gene = vec![];
 
@@ -49,7 +45,7 @@ impl Chromosome {
 }
 
 impl Population {
-    pub fn new(size: u32, size_genes: u32) -> Population {
+    pub fn new(size: i32, size_genes: i32) -> Population {
 
         let mut chromosomes = vec![];
 

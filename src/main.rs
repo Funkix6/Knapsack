@@ -6,7 +6,6 @@ mod mutation;
 mod context;
 
 use crate::initial_population::Population;
-use crate::fitness_function::evaluate_fitness;
 use crate::context::Backpack;
 
 fn main() {

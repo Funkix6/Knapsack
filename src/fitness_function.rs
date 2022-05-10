@@ -1,9 +1,5 @@
 use crate::initial_population::Population;
 use crate::initial_population::Chromosome;
-<<<<<<< HEAD
-
-=======
->>>>>>> af188f5b0c0eeac5a66990012317a9cd65152932
 use crate::context::Backpack;
 
 pub fn run() {
@@ -18,7 +14,7 @@ pub fn evaluate_fitness(mut population: Population, backpack: &Backpack) -> Popu
       println!("Evaluation chromosome n°{}", i);
       let value = check_value(&population.chromosomes[i], &backpack);
       let weight = check_weight(&population.chromosomes[i], &backpack);
-      let fitness: i16 = backpack.max_weight - weight;
+      let fitness = backpack.items_max_weight() - (backpack.max_weight - weight).abs();
       println!("fitness : {}", fitness);
       population.chromosomes[i].fitness = fitness;
     }
@@ -26,15 +22,9 @@ pub fn evaluate_fitness(mut population: Population, backpack: &Backpack) -> Popu
   population
 }
 
-pub fn check_weight(chromosome: &Chromosome, backpack: &Backpack) {
-    println!("{}", chromosome.gene[0]);
-    backpack.print_content();
-}
-
-
 //Test the fitness of the populations
-fn check_weight(chromosome: &Chromosome, backpack: &Backpack) -> i16 {
-  let mut total_weight: i16 = 0;
+fn check_weight(chromosome: &Chromosome, backpack: &Backpack) -> i32 {
+  let mut total_weight: i32 = 0;
   
   for i in 0..chromosome.gene.len() {
     if chromosome.gene[i] == true {
